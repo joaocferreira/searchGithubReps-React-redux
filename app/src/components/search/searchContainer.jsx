@@ -1,31 +1,35 @@
 import React from 'react';
 import Axios from 'axios';
 import Search from './search.jsx';
+import { connect } from 'react-redux';
+import store from '../../store';
 
 const SearchContainer = React.createClass({
 
-	getInitialState() {
-    return {
-      repos: [],
-      query: ''
-    }
-  },
-
   handleChange(event) {
   	let query = event.target.value;
-  	this.setState({ query });
+    store.dispatch({
+      type: 'TYPE_QUERY',
+      data: query
+    });
 
   	if (!query.length) {
-  		this.setState({repos: [] });
+  		store.dispatch({
+        type: 'ADD_REPOS',
+        data: []
+      });
   	}
   },
 
   handleSubmit(event) {
   	event.preventDefault();
-  	let query = this.state.query;
+  	let query = this.props.query;
 
   	if (!query) {
-  		return this.setState({repos: [] });
+  		store.dispatch({
+        type: 'ADD_REPOS',
+        data: []
+      });
   	} 
   	
   	Axios.get('https://api.github.com/search/repositories', {
@@ -34,20 +38,36 @@ const SearchContainer = React.createClass({
 	  		}
   		})
   		.then((response) => {
-      	this.setState({repos: response.data.items});
-        this.props.route.addHistory(this.state.query);
+        store.dispatch({
+          type: 'ADD_REPOS',
+          data: response.data.items
+        });
+        store.dispatch({
+          type: 'MAKE_QUERY',
+          data: this.props.query
+        });
     	})
     	.catch((error) => {
-      	this.setState({repos: [] });
+      	 store.dispatch({
+          type: 'ADD_REPOS',
+          data: []
+        });
 		  });
   },
 
   render() {
   	return (
-  		<Search handleSubmit={this.handleSubmit} state={this.state.query}
-      handleChange={this.handleChange} repos={this.state.repos} />
+  		<Search handleSubmit={this.handleSubmit} state={this.props.query}
+      handleChange={this.handleChange} repos={this.props.repos} query={this.props.query} />
   	);
   }
 });
 
-export default SearchContainer;
+const mapStateToProps = (store) => {
+  return {
+    repos: store.reposState,
+    query: store.queryState
+  };
+};
+
+export default connect(mapStateToProps)(SearchContainer);

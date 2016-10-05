@@ -1,4 +1,6 @@
 import React from 'react';
+import store from '../../store';
+import { connect } from 'react-redux';
 
 const History = React.createClass({
   
@@ -6,7 +8,7 @@ const History = React.createClass({
     return (
 			<div>
 				<h1>History</h1>
-				{this.props.route.historyArray.map(this.createListItem)}
+				{this.props.history.map(this.createListItem)}
 			</div>
 		);
 	},
@@ -21,4 +23,10 @@ const History = React.createClass({
 
 });
 
-export default History;
+const mapStateToProps = (store) => {
+  return {
+    history: store.historyState
+  };
+};
+
+export default connect(mapStateToProps)(History);
