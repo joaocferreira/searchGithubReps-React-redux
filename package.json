@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "webpack-dev-server --progress"
+    "start": "webpack-dev-server --progress"
   },
   "author": "",
   "license": "ISC",
