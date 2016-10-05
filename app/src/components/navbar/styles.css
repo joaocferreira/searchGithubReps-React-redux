@@ -1,0 +1,30 @@
+.navbar {
+	border-right: 1px solid #212121;
+	width: 30%;
+	max-width: 400px;
+	float: left;
+	height: 100%;
+	padding: 5%;
+	box-sizing: border-box;
+}
+
+.ul {
+	margin-top: 20%;
+	padding-left: 0;
+}
+
+.li {
+	list-style: none;
+	height: 10%;
+    font-size: 2em;
+}
+
+.a:hover {
+	text-decoration-color: #212121;
+	text-decoration: underline;
+}
+
+.a {
+	text-decoration: none;
+	color: inherit;
+}

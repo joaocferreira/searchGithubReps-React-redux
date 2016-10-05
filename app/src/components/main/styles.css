@@ -1,0 +1,11 @@
+.background {
+	background-color: #fafafa ;
+	color: #212121;
+	font-family: "Verdana, Verdana, Geneva, sans-serif";
+	font-style: italic;
+}
+
+.content {
+	padding: 5%;
+	float: left;
+}
