@@ -8,9 +8,9 @@ const Navbar = React.createClass({
     	<div className={styles.navbar}>
 	    	<h1>React App</h1>
 				<ul className={styles.ul}>
-					<Link to='/' className={styles.a}><li className={styles.li}>Search</li></Link>
-					<Link to='/history' className={styles.a}><li className={styles.li}>History</li></Link>
-					<Link to='/about' className={styles.a}><li className={styles.li}>About</li></Link>
+					<Link to='/' /*activeClassName={styles.a_active}*/ className={styles.a} ><li className={styles.li}>Search</li></Link>
+					<Link to='/history' /*activeClassName={styles.a_active}*/ className={styles.a} ><li className={styles.li}>History</li></Link>
+					<Link to='/about' /*activeClassName={styles.a_active}*/ className={styles.a}  ><li className={styles.li}>About</li></Link>
 				</ul>
     	</div>
     );

@@ -1,23 +1,19 @@
 import React from 'react';
 import Axios from 'axios';
-import Search from './search.jsx';
 import { connect } from 'react-redux';
+
+import Search from './search.jsx';
 import store from '../../store';
+import * as Actions from './search-actions';
 
 const SearchContainer = React.createClass({
 
   handleChange(event) {
   	let query = event.target.value;
-    store.dispatch({
-      type: 'TYPE_QUERY',
-      data: query
-    });
+    store.dispatch(Actions.typeQuery(query));
 
   	if (!query.length) {
-  		store.dispatch({
-        type: 'ADD_REPOS',
-        data: []
-      });
+      store.dispatch(Actions.addRepos([]));
   	}
   },
 
@@ -26,10 +22,7 @@ const SearchContainer = React.createClass({
   	let query = this.props.query;
 
   	if (!query) {
-  		store.dispatch({
-        type: 'ADD_REPOS',
-        data: []
-      });
+      store.dispatch(Actions.addRepos([]));
   	} 
   	
   	Axios.get('https://api.github.com/search/repositories', {
@@ -38,20 +31,11 @@ const SearchContainer = React.createClass({
 	  		}
   		})
   		.then((response) => {
-        store.dispatch({
-          type: 'ADD_REPOS',
-          data: response.data.items
-        });
-        store.dispatch({
-          type: 'MAKE_QUERY',
-          data: this.props.query
-        });
+        store.dispatch(Actions.addRepos(response.data.items));
+        store.dispatch(Actions.makeQuery(this.props.query));
     	})
     	.catch((error) => {
-      	 store.dispatch({
-          type: 'ADD_REPOS',
-          data: []
-        });
+      	 store.dispatch(Actions.addRepos([]));
 		  });
   },
 

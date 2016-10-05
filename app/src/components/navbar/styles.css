@@ -19,12 +19,13 @@
     font-size: 2em;
 }
 
-.a:hover {
-	text-decoration-color: #212121;
-	text-decoration: underline;
-}
 
 .a {
 	text-decoration: none;
 	color: inherit;
+}
+
+.a:hover, .a_active {
+	text-decoration-color: #212121;
+	text-decoration: underline;
 }
