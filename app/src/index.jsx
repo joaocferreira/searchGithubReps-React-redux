@@ -7,11 +7,17 @@ import History from './components/history/history.jsx';
 import About from './components/about/about.jsx';
 import NotFound from './components/error/404.jsx';
 
+const historyArray = [];
+
+const addHistory = (query) => {
+	historyArray.push(query);
+};
+
 ReactDOM.render((
 	<Router history={browserHistory}>
 		<Route path='/' component={Main}>
-    		<IndexRoute component={SearchContainer} />
-    		<Route path='/history' component={History} />
+    		<IndexRoute component={SearchContainer} addHistory={addHistory} />
+    		<Route path='/history' component={History} historyArray={historyArray} />
     		<Route path='/about' component={About} />
     		<Route path='*' component={NotFound} />
     	</Route>

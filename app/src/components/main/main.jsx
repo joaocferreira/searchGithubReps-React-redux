@@ -3,6 +3,7 @@ import styles from './styles.css'
 import Navbar from '../navbar/navbar.jsx';
 
 const Main = React.createClass({
+	
   render() {
   	return (
 			<div className={styles.background}>

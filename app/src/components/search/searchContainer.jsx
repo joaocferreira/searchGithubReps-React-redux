@@ -35,6 +35,7 @@ const SearchContainer = React.createClass({
   		})
   		.then((response) => {
       	this.setState({repos: response.data.items});
+        this.props.route.addHistory(this.state.query);
     	})
     	.catch((error) => {
       	this.setState({repos: [] });

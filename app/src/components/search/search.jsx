@@ -2,7 +2,6 @@ import React from 'react';
 import RepositoryList from './repository/repositoryList.jsx';
 
 const Search = (props) => {
-	console.log(props);
 	return (
 		<div>
 			<h1>Search</h1>
