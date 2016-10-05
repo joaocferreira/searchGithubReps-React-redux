@@ -1,3 +1,5 @@
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+
 var config = {
   entry: './app/src/index.jsx',
   output: {
@@ -19,9 +21,11 @@ var config = {
       }
     ]
   },
-  devServer: { 
-    inline: true
-  }
+  plugins: [
+    new BrowserSyncPlugin({
+      proxy: 'localhost:8080'
+    }, { reload: true } )
+  ]
 };
 
 module.exports = config;
