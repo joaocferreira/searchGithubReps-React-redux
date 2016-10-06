@@ -28,10 +28,12 @@
     "style-loader": "^0.13.1",
     "vision": "^4.1.0",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.1"
+    "webpack-dev-server": "^1.16.1",
+    "webpack-isomorphic-tools": "^2.5.8"
   },
   "dependencies": {
     "axios": "^0.14.0",
+    "normalize.css": "^5.0.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
