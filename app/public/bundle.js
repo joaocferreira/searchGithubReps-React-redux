@@ -84,12 +84,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var historyArray = [];
-
-	var addHistory = function addHistory(query) {
-	  historyArray.push(query);
-	};
-
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRedux.Provider,
 	  { store: _store2.default },
@@ -99,8 +93,8 @@
 	    _react2.default.createElement(
 	      _reactRouter.Route,
 	      { path: '/', component: _main2.default },
-	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _SearchContainer2.default, addHistory: addHistory }),
-	      _react2.default.createElement(_reactRouter.Route, { path: '/history', component: _history2.default, historyArray: historyArray }),
+	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _SearchContainer2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/history', component: _history2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/about', component: _about2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '*', component: _2.default })
 	    )
